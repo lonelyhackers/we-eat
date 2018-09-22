@@ -13,12 +13,12 @@ var excluded_profile_names = [];
 show_best_match();
 
 function show_best_match(){
-  var scores = [];
+  //var scores = [];
   for(var i = 0; i < get_num_profiles(); i++){
     get_profile(i);
     if(excluded_profile_names.includes(cur_profile.Name)){
       continue;
-    }
+    }/*
 	var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
     var cur_profile_prefs = cur_profile.Prefs.split(',');
     var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
@@ -28,12 +28,12 @@ function show_best_match(){
 	}
 	
 	scores.push([matching, cur_profile.Name]);
-    
+    */
     var formatted_url = 'https://localhost:8000?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
     get_nearby_restaurants(formatted_url);
-  }
+  }/*
   scores.sort(sortFunction);
-  return scores;
+  return scores;*/
 }
 
 function sortFunction(a, b) {
