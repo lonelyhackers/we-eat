@@ -13,19 +13,36 @@ var excluded_profile_names = [];
 show_best_match();
 
 function show_best_match(){
-  var best_index = 0;
-  var highest_match = 0;
+  var scores = [];
   for(var i = 0; i < get_num_profiles(); i++){
     get_profile(i);
     if(excluded_profile_names.includes(cur_profile.Name)){
       continue;
     }
+	var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
     var cur_profile_prefs = cur_profile.Prefs.split(',');
-    var matching = matching_strings(prefs,cur_profile_prefs);//array containing matching prefs
+    var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
+	
+	if(dist > 1609.34*distance || dist > 1609.34*cur_profile.distance) {
+		continue;
+	}
+	
+	scores.push([matching, cur_profile.Name]);
     
     var formatted_url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
     get_nearby_restaurants(formatted_url);
   }
+  scores.sort(sortFunction);
+  return scores;
+}
+
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
 }
 
 //haversine formula for lat/log diff to distance in meters
@@ -92,12 +109,11 @@ function get_nearby_restaurants(formatted_url){
 
 //returns array of matches between two string arrays
 function matching_strings(stra1,stra2){
-  var matching = [];
   var count = 0;
   for(var i = 0; i < stra1.length; i++){
     if(stra2.includes(stra1[i])){
-       matching.push(stra1[i]);
+       count++;
     }
   }
-  return matching;
+  return count;
 }
