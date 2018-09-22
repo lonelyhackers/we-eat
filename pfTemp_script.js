@@ -1,3 +1,5 @@
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://dennislo930:Letmein24!@cluster0-iyi5w.mongodb.net/admin";
 var url_string = window.location.href;
 var url = new URL(url_string);
 var name = url.searchParams.get('name');
@@ -13,19 +15,36 @@ var excluded_profile_names = [];
 show_best_match();
 
 function show_best_match(){
-  var best_index = 0;
-  var highest_match = 0;
+  var scores = [];
   for(var i = 0; i < get_num_profiles(); i++){
     get_profile(i);
     if(excluded_profile_names.includes(cur_profile.Name)){
       continue;
     }
+	var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
     var cur_profile_prefs = cur_profile.Prefs.split(',');
-    var matching = matching_strings(prefs,cur_profile_prefs);//array containing matching prefs
+    var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
+	
+	if(dist > 1609.34*distance || dist > 1609.34*cur_profile.distance) {
+		continue;
+	}
+	
+	scores.push([matching, cur_profile.Name]);
     
-    var formatted_url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
-    get_nearby_restaurants(formatted_url);
+    /*var formatted_url = 'https://localhost:8000?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
+    get_nearby_restaurants(formatted_url);*/
   }
+  scores.sort(sortFunction);
+  return scores;
+}
+
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
 }
 
 //haversine formula for lat/log diff to distance in meters
@@ -46,7 +65,23 @@ function calc_distance(lat1,lon1,lat2,lon2){//in degrees
   return d;
 }
 
-//somehow access database and get the number of profiles
+//Get name's info from MongoDB, returns in form of JSON object
+function export(name) {
+	var res;
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var res;
+	  var dbo = db.db("we-eat");
+	  dbo.collection("profiles").findOne({"Name":name}, function(err, result) {
+		if (err) throw err;
+		res = JSON.parse(result);
+		db.close();
+	  });
+	});
+	return res;
+}
+
+//access database and get the number of profiles
 function get_num_profiles(){
   return 2;
 }
@@ -65,40 +100,37 @@ function get_profile(number) {
  }
 
 function get_nearby_restaurants(formatted_url){
-  /*var xobj = new XMLHttpRequest();
+  var xobj = new XMLHttpRequest();
   xobj.open("GET", formatted_url, false);
-  xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
+  //xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
-  console.log('yo');
   xobj.onreadystatechange = function(){
     if (xobj.readyState == 4 && xobj.status == "200") {
-      var textobj = JSON.parse(xobj.responseText);
-      document.getElementbyId('Name').innerHTML = xobj.responseText;
+      console.log('It worked');
     }
-  }*/
-  $.ajax({
+  }
+  /*$.ajax({
     type: "GET",
     beforeSend: function(request){
       request.withCredentials = true;
       request.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'); 
     },
-    //headers: {'Authorization' : 'Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'},
+    headers: {'Authorization' : 'Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'},
     url: formatted_url,
     dataType : 'jsonp',
     success: function(msg) {
       console.log('Hey it worked');
     }
-  });
+  });*/
 }
 
 //returns array of matches between two string arrays
 function matching_strings(stra1,stra2){
-  var matching = [];
   var count = 0;
   for(var i = 0; i < stra1.length; i++){
     if(stra2.includes(stra1[i])){
-       matching.push(stra1[i]);
+       count++;
     }
   }
-  return matching;
+  return count;
 }
