@@ -3,12 +3,20 @@
 <body>
 
 <style>
-div.absolute {
+button.absolute1 {
     position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    height: 100px;
+    top: 575px;
+    right: 573px;
+    width: 50px;
+    height: 30px;
+    border: 3px solid #73AD21;
+}
+button.absolute2 {
+    position: absolute;
+    top: 575px;
+    right: 160px;
+    width: 50px;
+    height: 30px;
     border: 3px solid #73AD21;
 } 
 </style>
@@ -26,8 +34,9 @@ Mexican, Ugandan, etc.
 </textarea>
 
 <p>
-<button class="absolute">Nay</button>
-<button>Yay</button>
+<button class="absolute1" onclick="window.location.replace("http://stackoverflow.com");">Nay</button>
+
+<button class="absolute2" onclick="window.location.replace("http://facebook.com")>Yay</button>
 </p>
 
 <style>
