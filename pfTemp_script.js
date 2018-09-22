@@ -65,7 +65,7 @@ function get_profile(number) {
  }
 
 function get_nearby_restaurants(formatted_url){
-  var xobj = new XMLHttpRequest();
+  /*var xobj = new XMLHttpRequest();
   xobj.open("GET", formatted_url, false);
   xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
@@ -75,7 +75,16 @@ function get_nearby_restaurants(formatted_url){
       var textobj = JSON.parse(xobj.responseText);
       document.getElementbyId('Name').innerHTML = xobj.responseText;
     }
-  }
+  }*/
+  $.ajax({
+    type: "GET",
+    headers: {Authorization : 'Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'},
+    url: formatted_url,
+    dataType : 'jsonp',
+    success: function(msg) {
+      console.log('Hey it worked');
+    }
+  });
 }
 
 //returns array of matches between two string arrays

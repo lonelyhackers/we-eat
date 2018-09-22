@@ -1,31 +1,133 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>We-Eat</title>
-    <script async src="question_script.js"></script>
-  </head>
-  <body>
-    <p align="center">Please answer the following questions.</p>
-    <p align="center">Name: <input type="text" name="input_name" id="input_name"></p>
-    <p align="center">Distance Range: <select id="distance">
-      <option value="1">Within 1 mile</option>
-      <option value="5">5 miles</option>
-      <option value="10">10 miles</option>
-      <option value="25">25 miles</option>
-    </select></p>
-    <p align="center">Food preferences/interests: <select id="prefs" multiple>
-      <option value="mediterranean">Mediterranean</option>
-      <option value="indian">Indian</option>
-      <option value="italian">Italian</option>
-      <option value="japanese">Japanese</option>
-      <option value="chinese">Chinese</option>
-      <option value="korean">Korean</option>
-      <option value="thai">Thai</option>
-      <option value="greek">Greek</option>
-      <option value="burgers">Burgers</option>
-      <option value="fastfood">Fast food</option>
-      <option value="korean">Korean</option>
-    </select></p>
-    <p align="center"><button type="button" id="next" disabled>Next</button></p>s
-  </body>
+<html lang="en" ng-app="todoApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+        <script async src="question_script.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.css" rel="stylesheet">
+        <style>
+            .done-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.intro {
+    margin-top: 30px;
+}
+.slidecontainer {
+    margin: auto;
+    width: 50%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+span {
+    display: inline;
+    background-color: LimeGreen;
+    border-radius: 10px;
+    text-align: center;
+    width: 220px;
+}
+
+.foodcontainer {
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    margin: auto;
+}
+
+.button {
+    background-color: LimeGreen;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+		
+.button:disabled {
+	opacity: 0.5;
+		}
+
+    </style>
+    </head>
+    <body style="background-image: linear-gradient(87deg, rgb(204, 43, 94) 0%, rgb(117, 58, 136) 100%); background-repeat: repeat-y; background-position: right bottom;">
+        <div class="container">
+		<h2><p align="center">Share Who You Are</p></h2>
+		    <h4> <p align="center">Name: <input type="text" name="input_name" id="input_name"></p> </h4>
+		    <div class="slidecontainer">
+			<h4> <p align="center"> People within <span> <span id="demo"></span> </span>    miles.</p> </h4>
+			<input type="range" min="1" max="100" value="50" class="slider" id="distance">
+		    </div>
+		    <h4> <p align="center">
+			    Tap food you like:  <div class="foodcontainer">
+				<select id="prefs" multiple>
+				    <option value="mediterranean">Mediterranean</option>
+				    <option value="indian">Indian</option>
+				    <option value="italian">Italian</option>
+				    <option value="japanese">Japanese</option>
+				    <option value="chinese">Chinese</option>
+				    <option value="korean">Korean</option>
+				    <option value="thai">Thai</option>
+				    <option value="greek">Greek</option>
+				    <option value="burger">Burgers</option>
+				    <option value="fast">Fast food</option>
+				    <option value="korean">Korean</option>
+				</select>                         
+			    </div> 
+			</p> </h4>
+            <p align="center"><button class="button" id="next" disabled>Next</button></p>
+	    <h5><p align="center">We/Eat does not keep user information.</p></h5>
+	    <h5><p align="center"><a href="weeat.us">Return Home</a></p></h5>
+        </div>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script>
+		var slider = document.getElementById("distance");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+    slider.oninput = function() {
+	      output.innerHTML = this.value;
+    }
+	</script>
+	
+    </body>
 </html>

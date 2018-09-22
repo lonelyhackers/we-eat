@@ -2,7 +2,7 @@ var prefs = document.getElementById('prefs');
 var next_button = document.getElementById('next');
 var input_name = document.getElementById('input_name');
 var distance = document.getElementById('distance');
-
+                                         
 function getSelectValues(select) {
   var result = [];
   var options = select && select.options;
@@ -34,7 +34,7 @@ next_button.onclick = function(){
     window.location.href = 'template2/betterTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param + '&latitude=' + position.coords.latitude + '&longitude=' + position.coords.longitude;
   }
   function geoError(){
-    alert("Please allow us to access your location to help us find restaurants and people nearby!");
+    window.location.href = 'pfTemp.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param + '&latitude=' + 40.4469226 + '&longitude=' + -79.9448544;
   }
   
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
