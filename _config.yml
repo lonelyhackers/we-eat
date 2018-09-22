@@ -1,9 +1,9 @@
 title: WeEat | Lonely Hackers
 email: rbm@andrew.cmu.edu
 description: Turn finding people to eat with into a game, not an anxiety. 
-baseurl: "lonelyhackers.github.io/we-eat/" # the subpath of your site, e.g. /blog
+baseurl: "/we-eat/" # the subpath of your site, e.g. /blog
 #url: "http://127.0.0.1:4000" # for testing purpose
-url: "lonelyhackers.github.io/we-eat/" # the base hostname & protocol for your site
+url: "lonelyhackers.github.io/" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
