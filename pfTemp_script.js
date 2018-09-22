@@ -6,17 +6,11 @@ var prefs = url.searchParams.get('prefs');
 var latitude = url.searchParams.get('latitude');
 var longitude = url.searchParams.get('longitude');
 
-var cur_profile;/*facepalms
+var cur_profile;//facepalms
 
-/*
 for(var i = 0; i < get_num_profiles(); i++){
-  var profile = get_profile(i);
-  
-}*/
-
-//testing ability to get profile info from json
-get_profile(1);
-console.log(cur_profile);
+  get_profile(i);
+}
 
 //haversine formula
 function calc_distance(lat1,lon1,lat2,lon2){//in degrees
@@ -38,7 +32,7 @@ function calc_distance(lat1,lon1,lat2,lon2){//in degrees
 
 //somehow access database and get the number of profiles
 function get_num_profiles(){
-  return 1;
+  return 2;
 }
 
 //code to load json from stackoverflow. hopefully it works
