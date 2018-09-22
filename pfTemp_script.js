@@ -10,6 +10,8 @@ var cur_profile;//facepalms
 
 for(var i = 0; i < get_num_profiles(); i++){
   get_profile(i);
+  cur_profile_prefs = cur_profile.Prefs.split(',');
+  console.log(cur_profile.Name + ' ' + cur_profile_prefs);
 }
 
 //haversine formula
@@ -47,3 +49,8 @@ function get_profile(number) {
   };
   xobj.send(null);
  }
+
+//returns how many prefs match between two pref arrays
+function matching_prefs(prefs1,prefs2){
+  //
+}
