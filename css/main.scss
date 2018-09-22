@@ -3,6 +3,10 @@
 ---
 @charset "utf-8";
 
+// mixins
+@import
+  'helpers/variables',
+  'helpers/mixins';
 // Base
 @import
   'base/reset';
