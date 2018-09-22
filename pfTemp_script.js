@@ -8,6 +8,8 @@ var longitude = url.searchParams.get('longitude');
 
 var cur_profile;//facepalms
 
+console.log(prefs);
+
 show_best_match();
 
 
