@@ -32,5 +32,6 @@ next_button.onclick = function(){
   //window.location.href = 'profileTemplate.html';
   console.log(input_name);
   console.log(distance);
+  console.log(prefs_param);
   window.location.href = 'profileTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param; 
 }
