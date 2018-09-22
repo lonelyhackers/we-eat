@@ -69,10 +69,10 @@ function get_nearby_restaurants(formatted_url){
   xobj.open("GET", url, false);
   xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
+  console.log('yo');
   xobj.onreadystatechange = function(){
     if (xobj.readyState == 4 && xobj.status == "200") {
       var textobj = JSON.parse(xobj.responseText);
-      console.log('yo');
       document.getElementbyId('Name').innerHTML = xobj.responseText;
     }
   }
