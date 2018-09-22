@@ -5,4 +5,5 @@ while(true){
   }else{
     document.getElementById('next').disabled = false;
   }
+  document.getElementById('test').value = prefs.val().length;
 }
