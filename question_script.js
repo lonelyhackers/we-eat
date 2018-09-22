@@ -1,4 +1,7 @@
-while(true){
+document.getElementById('prefs').onclick = function(){
+  document.getElementById('next').disabled = false;
+}
+/*while(true){
   var prefs = document.getElementById('prefs');
   if(prefs.val().length === 0){
     document.getElementById('next').disabled = true;
@@ -7,3 +10,4 @@ while(true){
   }
   document.getElementById('test').value = prefs.val().length;
 }
+*/
