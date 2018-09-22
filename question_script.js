@@ -34,7 +34,7 @@ next_button.onclick = function(){
     window.location.href = 'template2/betterTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param + '&latitude=' + position.coords.latitude + '&longitude=' + position.coords.longitude;
   }
   function geoError(){
-    window.location.href = 'pfTemp.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param + '&latitude=' + 40.4469226 + '&longitude=' + -79.9448544;
+    window.location.href = 'template2/betterTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param + '&latitude=' + 40.4469226 + '&longitude=' + -79.9448544;
   }
   
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
