@@ -83,7 +83,7 @@ function matching_strings(stra1,stra2){
   var matching = [];
   var count = 0;
   for(var i = 0; i < stra1.length; i++){
-    if(stra2.includes(stra1[i]){
+    if(stra2.includes(stra1[i])){
        matching.push(stra1[i]);
     }
   }
