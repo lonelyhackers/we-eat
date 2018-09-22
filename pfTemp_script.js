@@ -8,7 +8,7 @@ var longitude = url.searchParams.get('longitude');
 
 var cur_profile;//facepalms
 
-var excluded_profile_names;
+var excluded_profile_names = [];
 
 show_best_match();
 
