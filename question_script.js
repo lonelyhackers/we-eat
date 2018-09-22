@@ -30,10 +30,13 @@ next_button.onclick = function(){
     prefs_param += '&prefs=' + pref_list[i];
   }
   
-  var position = navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+  function geoSuccess(position){
+    window.location.href = 'pfTemp.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param;
+  }
+  function geoError(){
+    alert("Please allow us to access your location to help us find restaurants and people nearby!");
+  }
   
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
   
-  
-  
-  window.location.href = 'pfTemp.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param; 
 }
