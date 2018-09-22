@@ -89,13 +89,14 @@ span {
 		<h2><p align="center">Share Who You Are</p></h2>
 		<form>
 		    <h4> <p align="center">Name: <input type="text" name="input_name" id="input_name"></p> </h4>
+		</form>
 		    <div class="slidecontainer">
 			<h4> <p align="center"> People within <span> <span id="demo"></span> </span>    miles.</p> </h4>
 			<input type="range" min="1" max="100" value="50" class="slider" id="distance">
 		    </div>
 		    <h4> <p align="center">
 			    Tap food you like:  <div class="foodcontainer">
-				<input type="radio" select id="prefs" multiple>
+				<select id="prefs" multiple>
 				    <option value="mediterranean">Mediterranean</option>
 				    <option value="indian">Indian</option>
 				    <option value="italian">Italian</option>
@@ -110,7 +111,6 @@ span {
 				</select>                         
 			    </div> 
 			</p> </h4>
-		</form>
             <p align="center"><button class="button" id="next" disabled="disabled">Next</button></p>
         </div>
         <!-- Bootstrap core JavaScript
