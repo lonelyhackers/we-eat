@@ -63,4 +63,5 @@ function matching_prefs(prefs1,prefs2){
       }
     }
   }
+  return count;
 }
