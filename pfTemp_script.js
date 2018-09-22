@@ -8,12 +8,24 @@ var longitude = url.searchParams.get('longitude');
 
 var cur_profile;//facepalms
 
-for(var i = 0; i < get_num_profiles(); i++){
-  get_profile(i);
-  cur_profile_prefs = cur_profile.Prefs.split(',');
-  
-  var matching = matching_prefs(prefs,cur_profile_prefs);
-  console.log(matching);
+show_best_match();
+
+
+function show_best_match(){
+  var best_index = 0;
+  var highest_match = 0;
+  for(var i = 0; i < get_num_profiles(); i++){
+    get_profile(i);
+    var cur_profile_prefs = cur_profile.Prefs.split(',');
+
+    var matching = matching_prefs(prefs,cur_profile_prefs);
+    console.log(matching);
+    
+    if(matching > highest_match){
+      best_index = i;
+      highest_match = matching;
+    }
+  }
 }
 
 //haversine formula
