@@ -23,8 +23,8 @@ function show_best_match(){
     var cur_profile_prefs = cur_profile.Prefs.split(',');
     var matching = matching_strings(prefs,cur_profile_prefs);//array containing matching prefs
     
-    var url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
-    get_nearby_restaurants(url);
+    var formatted_url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
+    get_nearby_restaurants(formatted_url);
   }
 }
 
@@ -66,7 +66,7 @@ function get_profile(number) {
 
 function get_nearby_restaurants(formatted_url){
   var xobj = new XMLHttpRequest();
-  xobj.open("GET", url, false);
+  xobj.open("GET", formatted_url, false);
   xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
   console.log('yo');
