@@ -1,0 +1,31 @@
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.button {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    
+    padding: 0;
+    margin-top: 1.5vh;
+    list-style: none;
+}
+
+.button0 {
+    background-color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 2px solid #4a86e8;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+    text-decoration: #4a86e8;
+
+}
+.button0:hover {
+    background-color: #4a86e8;
+    color: white;
+}
