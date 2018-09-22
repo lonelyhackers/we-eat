@@ -1,6 +1,6 @@
 var prefs = document.getElementById('prefs');
 var next_button = document.getElementById('next');
-var input_name = document.getElementById('name');
+var input_name = document.getElementById('input_name');
 var distance = document.getElementById('distance');
 
 function getSelectValues(select) {
