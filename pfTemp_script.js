@@ -74,6 +74,7 @@ function matching_prefs(prefs1,prefs2){
         count++;
         break;
       }
+      console.log(prefs1[i] + ' ' + prefs2[j]);
     }
   }
   return count;
