@@ -14,8 +14,6 @@ for(var i = 0; i < get_num_profiles(); i++){
 
 //testing ability to get profile info from json
 var profile = get_profile(1);
-console.log(profile);
-console.log(profile.name);
 
 //haversine formula
 function calc_distance(lat1,lon1,lat2,lon2){//in degrees
