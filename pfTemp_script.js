@@ -19,7 +19,7 @@ function show_best_match(){
   for(var i = 0; i < get_num_profiles(); i++){
     get_profile(i);
     var cur_profile_prefs = cur_profile.Prefs.split(',');
-    console.log(cur_profile_prefs);
+    console.log(cur_profile_prefs[0]);
 
     var matching = matching_prefs(prefs,cur_profile_prefs);
     console.log(matching);
