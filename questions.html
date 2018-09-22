@@ -81,6 +81,10 @@ span {
     margin: 4px 2px;
     cursor: pointer;
 }
+		
+.button.disabled{
+	opacity: 0.5;
+}
 
     </style>
     </head>
@@ -119,7 +123,7 @@ span {
     var output = document.getElementById("demo");
     output.innerHTML = slider.value;
     slider.oninput = function() {
-      output.innerHTML = this.value;
+	      output.innerHTML = this.value;
     }
 	</script>
 	
