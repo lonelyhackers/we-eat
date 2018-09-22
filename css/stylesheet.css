@@ -1,0 +1,80 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+#title {
+    text-align:center
+}
+
+table {
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+div {
+    width: 370px;
+    padding: 10px;
+    display: block;
+    border: 4px solid black;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.button1 {
+    /*
+    position: absolute;
+    top: 700px;
+    right: 975px;
+    width: 50px;
+    height: 30px;
+    border: 3px solid black;
+    */
+}
+.button2 {
+    position: absolute;
+    top: 700px;
+    right: 575px;
+    width: 50px;
+    height: 30px;
+    border: 4px solid black;
+}
+.button3 {
+    position: absolute;
+    top: 385px;
+    right: 615px;
+    width: 50px;
+    height: 50px;
+    border: 4px solid black;
+}
+.button3a {border-radius: 50%;}
+
