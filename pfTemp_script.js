@@ -57,7 +57,7 @@ function matching_prefs(prefs1,prefs2){
   var count = 0;
   for(var i = 0; i < prefs1.length; i++){
     for(var j = 0; j < prefs2.length; j++){
-      if(prefs1[i] === prefs2[j]){
+      if(prefs1[i] == prefs2[j]){
         count++;
         break;
       }
