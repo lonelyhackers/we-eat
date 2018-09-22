@@ -83,7 +83,6 @@ function get_nearby_restaurants(formatted_url){
     dataType : 'jsonp',
     success: function(msg) {
       console.log('Hey it worked');
-      document.getElementbyId('Name').innerHTML = xobj.responseText;
     }
   });
 }
