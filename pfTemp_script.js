@@ -55,7 +55,7 @@ function get_num_profiles(){
 function get_profile(number) {   
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
-  xobj.open('GET', 'profiles/profile' + String(number) + '.json', false);
+  xobj.open('GET', '/profiles/profile' + String(number) + '.json', false);
   xobj.onreadystatechange = function () {
     if (xobj.readyState == 4 && xobj.status == "200") {
       cur_profile = JSON.parse(xobj.responseText);
@@ -78,8 +78,11 @@ function get_nearby_restaurants(formatted_url){
   }*/
   $.ajax({
     type: "GET",
-    xhrFields: {withCredentials:true},
-    headers: {'Authorization' : 'Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'},
+    beforeSend: function(request){
+      request.withCredentials = true;
+      request.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'); 
+    },
+    //headers: {'Authorization' : 'Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx'},
     url: formatted_url,
     dataType : 'jsonp',
     success: function(msg) {
