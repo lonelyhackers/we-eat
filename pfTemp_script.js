@@ -70,9 +70,9 @@ function matching_prefs(prefs1,prefs2){
     for(var j = 0; j < prefs2.length; j++){
       if(prefs1[i] == prefs2[j]){
         count++;
-        console.log('yo');
         break;
       }
+      console.log(String(i) + ' ' + String(j) + ' ' + prefs1[i] + ' ' + prefs2[j]);
     }
   }
   return count;
