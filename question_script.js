@@ -22,13 +22,14 @@ prefs.onclick = function(){
   next_button.disabled = false;
 }
 
-pref_list = getSelectValues(prefs);
-
 next_button.onclick = function(){
+  var pref_list = getSelectValues(prefs);
+  
   var prefs_param = '';
   for (var i = 0; i < pref_list.length; i++){
     prefs_param += '&prefs=' + pref_list[i];
   }
+  
   //window.location.href = 'profileTemplate.html';
   console.log(input_name);
   console.log(distance);
