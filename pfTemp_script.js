@@ -24,6 +24,8 @@ function show_best_match(){
       best_index = i;
       highest_match = matching;
     }
+    
+    console.log(best_index);
   }
 }
 
@@ -72,7 +74,6 @@ function matching_prefs(prefs1,prefs2){
         count++;
         break;
       }
-      console.log(String(i) + ' ' + String(j) + ' ' + prefs1[i] + ' ' + prefs2[j]);
     }
   }
   return count;
