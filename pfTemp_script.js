@@ -6,6 +6,8 @@ var prefs = url.searchParams.get('prefs');
 var latitude = url.searchParams.get('latitude');
 var longitude = url.searchParams.get('longitude');
 
+var cur_profile;//*facepalms
+
 /*
 for(var i = 0; i < get_num_profiles(); i++){
   var profile = get_profile(i);
@@ -13,7 +15,8 @@ for(var i = 0; i < get_num_profiles(); i++){
 }*/
 
 //testing ability to get profile info from json
-console.log(get_profile(1));
+get_profile(1)
+console.log(cur_profile);
 
 //haversine formula
 function calc_distance(lat1,lon1,lat2,lon2){//in degrees
@@ -45,9 +48,8 @@ function get_profile(number) {
   xobj.open('GET', 'profiles/profile' + String(number) + '.json', true);
   xobj.onreadystatechange = function () {
     if (xobj.readyState == 4 && xobj.status == "200") {
-      // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
       console.log(JSON.parse(xobj.responseText));
-      return JSON.parse(xobj.responseText);
+      cur_profile = JSON.parse(xobj.responseText);
     }
   };
   xobj.send(null);
