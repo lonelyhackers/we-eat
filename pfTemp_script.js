@@ -16,25 +16,32 @@ show_best_match();
 
 function show_best_match(){
   var scores = [];
-  for(var i = 0; i < get_num_profiles(); i++){
-    get_profile(i);
-    if(excluded_profile_names.includes(cur_profile.Name)){
-      continue;
-    }
-	var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
-    var cur_profile_prefs = cur_profile.Prefs.split(',');
-    var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
-	
-	if(dist > 1609.34*distance || dist > 1609.34*cur_profile.distance) {
-		continue;
-	}
-	
-	scores.push([matching, cur_profile.Name]);
-    
-    /*var formatted_url = 'https://localhost:8000?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
-    get_nearby_restaurants(formatted_url);*/
-  }
-  scores.sort(sortFunction);
+  MongoClient.connect(url, function(err, db) {
+	  var dbo = db.db("we-eat");
+	  var cur_profile = dbo.collection("profiles").find();
+	  cur_profile.each(function(err, item) {
+		if(item == null) {
+			db.close();
+			break;
+		}
+		if(excluded_profile_names.includes(cur_profile.Name)){
+		  continue;
+		}
+		var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
+		var cur_profile_prefs = cur_profile.Prefs.split(',');
+		var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
+		
+		if(dist > 1609.34*distance || dist > 1609.34*cur_profile.distance) {
+			continue;
+		}
+		
+		scores.push([matching, export(cur_profile.Name)]);
+		
+		/*var formatted_url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
+		get_nearby_restaurants(formatted_url);*/
+	  });
+	});
+  scores.sort(sortFunction).reverse();
   return scores;
 }
 
@@ -102,8 +109,9 @@ function get_profile(number) {
 function get_nearby_restaurants(formatted_url){
   var xobj = new XMLHttpRequest();
   xobj.open("GET", formatted_url, false);
-  //xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
+  xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
+  console.log('yo');
   xobj.onreadystatechange = function(){
     if (xobj.readyState == 4 && xobj.status == "200") {
       console.log('It worked');
