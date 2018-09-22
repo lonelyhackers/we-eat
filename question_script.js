@@ -30,5 +30,5 @@ next_button.onclick = function(){
     prefs_param += '&prefs=' + pref_list[i];
   }*/
   //window.location.href = 'profileTemplate.html';
-  window.location.href = 'profileTemplate.html?name=' + input_name.value + '&distance=' + distance.value ;//+ prefs_param; 
+  window.location.href = 'profileTemplate.html?name=' + input_name.value;// + '&distance=' + distance.value ;//+ prefs_param; 
 }
