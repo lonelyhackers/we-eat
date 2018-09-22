@@ -71,6 +71,7 @@ function get_nearby_restaurants(formatted_url){
   xobj.send();
   xobj.onreadystatechange = function(){
     var textobj = JSON.parse(xobj.responseText);
+    console.log('yo');
     document.getElementbyId('Name').innerHTML = xobj.responseText;
   }
 }
