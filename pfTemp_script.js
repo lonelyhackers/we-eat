@@ -11,7 +11,9 @@ var cur_profile;//facepalms
 for(var i = 0; i < get_num_profiles(); i++){
   get_profile(i);
   cur_profile_prefs = cur_profile.Prefs.split(',');
-  console.log(cur_profile.Name + ' ' + cur_profile_prefs);
+  
+  var matching = matching_prefs(prefs,cur_profile_prefs);
+  console.log(matching);
 }
 
 //haversine formula
@@ -52,5 +54,13 @@ function get_profile(number) {
 
 //returns how many prefs match between two pref arrays
 function matching_prefs(prefs1,prefs2){
-  //
+  var count = 0;
+  for(var i = 0; i < prefs1.length; i++){
+    for(var j = 0; j < prefs2.length; j++){
+      if(prefs1[i] === prefs2[j]){
+        count++;
+        break;
+      }
+    }
+  }
 }
