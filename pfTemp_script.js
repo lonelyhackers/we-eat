@@ -66,7 +66,7 @@ function get_profile(number) {
 
 function get_nearby_restaurants(formatted_url){
   var xobj = new XMLHttpRequest();
-  xobj.setHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
+  xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.open("GET", url, false);
   xobj.send();
   xobj.onreadystatechange = function(){
