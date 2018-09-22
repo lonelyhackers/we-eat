@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <header>
-	<h3>We-eat</h3>
+	<center><h3>We-eat</h3></center>
 	<script async src="pfTemp_script.js"></script>
 </header>
-<body>
+<body style="font-family:Arial;">
 
 <style>
+.border {
+	border:4px solid black
+}
 div {
-    width: 370px;
+    width: 378px;
     padding: 10px;
     border: 4px solid black;
     margin-left:auto;
@@ -20,7 +23,7 @@ div {
     right: 975px;
     width: 50px;
     height: 30px;
-    border: 3px solid black;
+    border: 4px solid black;
 }
 .button2 {
     position: absolute;
@@ -32,7 +35,7 @@ div {
 }
 .button3 {
     position: absolute;
-    top: 385px;
+    top: 390px;
     right: 615px;
     width: 50px;
     height: 50px;
@@ -41,7 +44,8 @@ div {
 .button3a {border-radius: 50%;}
 </style>
 
-<p style="text-align:center;"><img src="http://www.clipartbest.com/cliparts/ncX/Bx7/ncXBx7pcB.jpeg" style=width:400px;height:400px;">
+<p style="text-align:center;"><img src="http://www.clipartbest.com/cliparts/ncX/Bx7/ncXBx7pcB.jpeg" class="border" style=width:400px;height:400px;">
+
 <p style="text-align:center;"><div>
 <b>Name:</b>
 <p id="Name">Cookie Monster</p>
@@ -51,9 +55,9 @@ div {
 <p id="Prefs">Mexican, Ugandan, etc.
 </div>
 
-<button class="button1" onclick="redirect()">Nay</button>
-<button class="button2" onclick="redirect()">Yay</button>
-<button class="button3 button3a" onclick="redirect()">?</button>
+<button class="button1" onclick="redirect()"><font face="Arial"><b>Nay</b></font></button>
+<button class="button2" onclick="redirect()"><font face="Arial"><b>Yay</b></font></button>
+<button class="button3 button3a" onclick="redirect()"><font face="Arial"><b>?</b></font></button>
 </p>
 
 <style>
