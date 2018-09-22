@@ -18,9 +18,9 @@ function show_best_match(){
     get_profile(i);
     if(excluded_profile_names.includes(cur_profile.Name)){
       continue;
-    }/*
-	var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
-    var cur_profile_prefs = cur_profile.Prefs.split(',');*/
+    }
+	//var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
+    var cur_profile_prefs = cur_profile.Prefs.split(',');
     var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
 	
 	/*if(dist > 1609.34*distance || dist > 1609.34*cur_profile.distance) {
