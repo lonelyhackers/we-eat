@@ -4,7 +4,7 @@ var input_name = document.getElementById('name');
 var distance = document.getElementById('document');
 
 prefs.onclick = function(){
-  next_buton.disabled = false;
+  next_button.disabled = false;
 }
 
 next_button.onclick = function(){
