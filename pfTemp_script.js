@@ -49,7 +49,8 @@ function get_profile(number) {
       // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
       console.log(JSON.parse(xobj.responseText));
       return JSON.parse(xobj.responseText);
+    }else{
+      xobj.send(null);
     }
   };
-  xobj.send(null);
  }
