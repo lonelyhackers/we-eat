@@ -2,7 +2,8 @@ var prefs = document.getElementById('prefs');
 var next_button = document.getElementById('next');
 var input_name = document.getElementById('input_name');
 var distance = document.getElementById('distance');
-
+var disclosure = document.getElementById('disclosure');
+                                         
 function getSelectValues(select) {
   var result = [];
   var options = select && select.options;
@@ -20,6 +21,7 @@ function getSelectValues(select) {
 
 prefs.onclick = function(){
   next_button.disabled = false;
+  disclosure.disabled = true;
 }
 
 next_button.onclick = function(){
