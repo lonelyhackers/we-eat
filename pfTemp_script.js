@@ -8,5 +8,5 @@ console.log(distance);
 console.log(prefs);
 
 if(name){
-  document.getElementById('Name').value = name;
+  document.getElementById('Name').innerHTML = name;
 }
