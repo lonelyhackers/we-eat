@@ -5,3 +5,4 @@ var distance = url.searchParams.get('distance');
 var prefs = url.searchParams.get('prefs');
 var latitude = url.searchParams.get('latitude');
 var longitude = url.searchParams.get('longitude');
+
