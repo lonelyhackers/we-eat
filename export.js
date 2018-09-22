@@ -6,7 +6,7 @@ MongoClient.connect(url, function(err, db) {
   var dbo = db.db("we-eat");
   dbo.collection("profiles").findOne({"Name":"Anoop Bhat"}, function(err, result) {
     if (err) throw err;
-    console.log(result.Prefs);
+    console.log(result);
     db.close();
   });
 });

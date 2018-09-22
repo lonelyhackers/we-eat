@@ -1,3 +1,5 @@
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://dennislo930:Letmein24!@cluster0-iyi5w.mongodb.net/admin";
 var url_string = window.location.href;
 var url = new URL(url_string);
 var name = url.searchParams.get('name');
@@ -63,7 +65,23 @@ function calc_distance(lat1,lon1,lat2,lon2){//in degrees
   return d;
 }
 
-//somehow access database and get the number of profiles
+//Get name's info from MongoDB, returns in form of JSON object
+function export(name) {
+	var res;
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var res;
+	  var dbo = db.db("we-eat");
+	  dbo.collection("profiles").findOne({"Name":name}, function(err, result) {
+		if (err) throw err;
+		res = JSON.parse(result);
+		db.close();
+	  });
+	});
+	return res;
+}
+
+//access database and get the number of profiles
 function get_num_profiles(){
   return 2;
 }
