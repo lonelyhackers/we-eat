@@ -31,7 +31,7 @@ next_button.onclick = function(){
   }
   
   function geoSuccess(position){
-    window.location.href = 'pfTemp.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param;
+    window.location.href = 'pfTemp.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param + '&latitude=' + position.coords.latitude + '&longitude=' + position.coords.longitude;
   }
   function geoError(){
     alert("Please allow us to access your location to help us find restaurants and people nearby!");
