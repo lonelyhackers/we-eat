@@ -7,6 +7,25 @@
   <body>
     <p align="center">Please answer the following questions.</p>
     <p align="center">Name: <input type="text" name="input_name" id="input_name"></p>
-    <p align="center"><input type="text" name="input_city" id="input_city"></p>
+    <p align="center">Distance Range: <select id="distance">
+      <option value="1">Within 1 mile</option>
+      <option value="5">5 miles</option>
+      <option value="10">10 miles</option>
+      <option value="25">25 miles</option>
+    </select></p>
+    <p align="center">Food preferences/interests: <select id="prefs" multiple>
+      <option value="mediterranean">Mediterranean</option>
+      <option value="indian">Indian</option>
+      <option value="italian">Italian</option>
+      <option value="japanese">Japanese</option>
+      <option value="chinese">Chinese</option>
+      <option value="korean">Korean</option>
+      <option value="thai">Thai</option>
+      <option value="greek">Greek</option>
+      <option value="burger">Burgers</option>
+      <option value="fast">Fast food</option>
+      <option value="korean">Korean</option>
+    </select></p>
+    <p align="center"><button type="button" id="next" onclick = "document.location.href = 'profileTemplate.html'" disabled>Next</button></p>
   </body>
 </html>
