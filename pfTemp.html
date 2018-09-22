@@ -22,21 +22,22 @@ button.absolute2 {
 </style>
 
 <p style="text-align:center;"><img src="http://www.clipartbest.com/cliparts/ncX/Bx7/ncXBx7pcB.jpeg" alt="Planets" style=width:400px;height:400px;">
-<textarea cols='60' rows='9'>
+<p>
 Name:
 Cookie Monster
 
+<p>
 Location:
 Pittsburgh 15289
-
+</p>
+<p>
 Food Preferences:
 Mexican, Ugandan, etc.
-</textarea>
 
 <p>
-<button class="absolute1" onclick="window.location.replace("http://stackoverflow.com");">Nay</button>
+<button class="absolute1" onclick="redirect()">Nay</button>
 
-<button class="absolute2" onclick="window.location.replace("http://facebook.com")>Yay</button>
+<button class="absolute2" onclick="redirect()">Yay</button>
 </p>
 
 <style>
@@ -44,5 +45,11 @@ body {
 	background-color:powderblue;
 }
 </style>
+
+<script>
+function redirect() {
+	window.location.href("http://stackoverflow.com");
+}
+</script>
 </body>
 </html>
