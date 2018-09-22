@@ -47,7 +47,7 @@ function get_profile(number) {
   xobj.onreadystatechange = function () {
     if (xobj.readyState == 4 && xobj.status == "200") {
       // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-      //console.log(JSON.parse(xobj.responseText));
+      console.log(JSON.parse(xobj.responseText));
       return JSON.parse(xobj.responseText);
     }
   };
