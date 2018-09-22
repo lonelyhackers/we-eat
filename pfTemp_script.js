@@ -1,3 +1,5 @@
+import * as jquery from 'jquery-3.3.1.min.js';
+
 var url_string = window.location.href;
 var url = new URL(url_string);
 var name = url.searchParams.get('name');
@@ -65,7 +67,7 @@ function get_profile(number) {
  }
 
 function get_nearby_restaurants(formatted_url){
-  var xobj = new XMLHttpRequest();
+  /*var xobj = new XMLHttpRequest();
   xobj.open("GET", formatted_url, false);
   xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
@@ -75,7 +77,18 @@ function get_nearby_restaurants(formatted_url){
       var textobj = JSON.parse(xobj.responseText);
       document.getElementbyId('Name').innerHTML = xobj.responseText;
     }
-  }
+  }*/
+  jquery.ajax({
+    type: "GET",
+    beforeSend: function(request) {
+      request.setRequestHeader("Authority", "Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx");
+    },
+    url: formatted_url,
+    success: function(msg) {
+      console.log('Hey it worked');
+      document.getElementbyId('Name').innerHTML = xobj.responseText;
+    }
+  });
 }
 
 //returns array of matches between two string arrays
