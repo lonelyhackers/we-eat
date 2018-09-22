@@ -29,8 +29,6 @@ next_button.onclick = function(){
   for (var i = 0; i < pref_list.length; i++){
     prefs_param += '&prefs=' + pref_list[i];
   }*/
-  //window.location.href = 'profileTemplate.html';
-  var label = document.createElement("Label");
-  label.innerHTML = input_name.value;
+  window.location.href = 'profileTemplate.html';
   //window.location.href = 'profileTemplate.html?name=' + input_name.value + '&distance=' + distance.value;//+ prefs_param; 
 }
