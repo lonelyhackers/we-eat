@@ -80,14 +80,14 @@ function get_nearby_restaurants(formatted_url){
 
 //returns array of matches between two string arrays
 function matching_strings(stra1,stra2){
+  var matching = [];
   var count = 0;
   for(var i = 0; i < stra1.length; i++){
     for(var j = 0; j < stra2.length; j++){
       if(stra1[i] == stra2[j]){
-        count++;
+        matching.push(stra1);
         break;
       }
     }
   }
-  return count;
 }
