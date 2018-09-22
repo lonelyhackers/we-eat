@@ -87,37 +87,60 @@ span {
     <body style="background-image: linear-gradient(87deg, rgb(204, 43, 94) 0%, rgb(117, 58, 136) 100%); background-repeat: repeat-y; background-position: right bottom;">
         <div class="container">
 		<h2><p align="center">Share Who You Are</p></h2>
-            <h4> <p align="center">Name: <input type="text" name="input_name" id="input_name"></p> </h4>
-            <div class="slidecontainer">
-                <h4> <p align="center"> People within <span> <span id="demo"></span> </span>    miles.</p> </h4>
-                <input type="range" min="1" max="100" value="50" class="slider" id="distance">
-            </div>
-            <h4> <p align="center">
-                    Tap food you like:  <div class="foodcontainer">
-                        <select id="prefs" multiple>
-                            <option value="mediterranean">Mediterranean</option>
-                            <option value="indian">Indian</option>
-                            <option value="italian">Italian</option>
-                            <option value="japanese">Japanese</option>
-                            <option value="chinese">Chinese</option>
-                            <option value="korean">Korean</option>
-                            <option value="thai">Thai</option>
-                            <option value="greek">Greek</option>
-                            <option value="burger">Burgers</option>
-                            <option value="fast">Fast food</option>
-                            <option value="korean">Korean</option>
-                        </select>                         
-                    </div> </p> </h4>
-            <p align="center"><button class="button" id="next">Next</button></p>
+		<form>
+		    <h4> <p align="center">Name: <input type="text" name="input_name" id="input_name"></p> </h4>
+		    <div class="slidecontainer">
+			<h4> <p align="center"> People within <span> <span id="demo"></span> </span>    miles.</p> </h4>
+			<input type="range" min="1" max="100" value="50" class="slider" id="distance">
+		    </div>
+		    <h4> <p align="center">
+			    Tap food you like:  <div class="foodcontainer">
+				<input type="radio" select id="prefs" multiple>
+				    <option value="mediterranean">Mediterranean</option>
+				    <option value="indian">Indian</option>
+				    <option value="italian">Italian</option>
+				    <option value="japanese">Japanese</option>
+				    <option value="chinese">Chinese</option>
+				    <option value="korean">Korean</option>
+				    <option value="thai">Thai</option>
+				    <option value="greek">Greek</option>
+				    <option value="burger">Burgers</option>
+				    <option value="fast">Fast food</option>
+				    <option value="korean">Korean</option>
+				</select>                         
+			    </div> 
+			</p> </h4>
+		</form>
+            <p align="center"><button class="button" id="next" disabled="disabled">Next</button></p>
         </div>
         <!-- Bootstrap core JavaScript
     ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script>var slider = document.getElementById("distance");
+        <script>
+		var slider = document.getElementById("distance");
     var output = document.getElementById("demo");
     output.innerHTML = slider.value;
     slider.oninput = function() {
       output.innerHTML = this.value;
-    }</script>
+    }
+	(function() {
+    $('form > input').keyup(function() {
+
+        var empty = false;
+        $('form > input').each(function() {
+            if ($(this).val() == '') {
+                empty = true;
+            }
+        });
+
+        if (empty) {
+            $('#register').attr('disabled', 'disabled'); // updated according to http://stackoverflow.com/questions/7637790/how-to-remove-disabled-attribute-with-jquery-ie
+        } else {
+            $('#register').removeAttr('disabled'); // updated according to http://stackoverflow.com/questions/7637790/how-to-remove-disabled-attribute-with-jquery-ie
+        }
+    });
+})()
+	</script>
+	
     </body>
 </html>
