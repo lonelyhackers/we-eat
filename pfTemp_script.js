@@ -31,8 +31,8 @@ function show_best_match(){
 	
 	scores.push([matching, cur_profile.Name]);
     
-    var formatted_url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
-    get_nearby_restaurants(formatted_url);
+    /*var formatted_url = 'https://localhost:8000?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
+    get_nearby_restaurants(formatted_url);*/
   }
   scores.sort(sortFunction);
   return scores;
@@ -102,9 +102,8 @@ function get_profile(number) {
 function get_nearby_restaurants(formatted_url){
   var xobj = new XMLHttpRequest();
   xobj.open("GET", formatted_url, false);
-  xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
+  //xobj.setRequestHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
   xobj.send();
-  console.log('yo');
   xobj.onreadystatechange = function(){
     if (xobj.readyState == 4 && xobj.status == "200") {
       console.log('It worked');
