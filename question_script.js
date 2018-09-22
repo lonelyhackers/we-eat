@@ -1,7 +1,7 @@
 var prefs = document.getElementById('prefs');
 var next_button = document.getElementById('next');
 var input_name = document.getElementById('name');
-var distance = document.getElementById('document');
+var distance = document.getElementById('distance');
 
 prefs.onclick = function(){
   next_button.disabled = false;
