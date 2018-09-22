@@ -14,6 +14,7 @@ var excluded_profile_names = [];
 
 show_best_match();
 
+//returns array of users of decreasing score (entries are of format [score, JSON])
 function show_best_match(){
   var scores = [];
   MongoClient.connect(url, function(err, db) {
@@ -23,9 +24,6 @@ function show_best_match(){
 		if(item == null) {
 			db.close();
 			break;
-		}
-		if(excluded_profile_names.includes(cur_profile.Name)){
-		  continue;
 		}
 		var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
 		var cur_profile_prefs = cur_profile.Prefs.split(',');
@@ -45,6 +43,7 @@ function show_best_match(){
   return scores;
 }
 
+//sort function for 2D-array
 function sortFunction(a, b) {
     if (a[0] === b[0]) {
         return 0;
@@ -90,10 +89,11 @@ function export(name) {
 
 //access database and get the number of profiles
 function get_num_profiles(){
-  return 2;
+  var dbo = db.db("we-eat");
+  return dbo.collection("profiles").count();
 }
 
-//code to load json from stackoverflow. hopefully it works
+//code to load JSON from stackoverflow. hopefully it works
 function get_profile(number) {   
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
@@ -132,7 +132,7 @@ function get_nearby_restaurants(formatted_url){
   });*/
 }
 
-//returns array of matches between two string arrays
+//returns number of matches between two string arrays
 function matching_strings(stra1,stra2){
   var count = 0;
   for(var i = 0; i < stra1.length; i++){
