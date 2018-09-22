@@ -90,4 +90,5 @@ function matching_strings(stra1,stra2){
       }
     }
   }
+  return matching;
 }
