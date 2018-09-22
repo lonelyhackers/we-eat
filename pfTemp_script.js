@@ -13,8 +13,7 @@ for(var i = 0; i < get_num_profiles(); i++){
 }*/
 
 //testing ability to get profile info from json
-var profile = get_profile(1);
-console.log(profile);
+console.log(get_profile(1));
 
 //haversine formula
 function calc_distance(lat1,lon1,lat2,lon2){//in degrees
@@ -49,8 +48,7 @@ function get_profile(number) {
       // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
       console.log(JSON.parse(xobj.responseText));
       return JSON.parse(xobj.responseText);
-    }else{
-      xobj.send(null);
     }
   };
+  xobj.send(null);
  }
