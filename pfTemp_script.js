@@ -8,6 +8,8 @@ var longitude = url.searchParams.get('longitude');
 
 var cur_profile;//facepalms
 
+var excluded_profile_names;
+
 show_best_match();
 
 function show_best_match(){
@@ -15,21 +17,18 @@ function show_best_match(){
   var highest_match = 0;
   for(var i = 0; i < get_num_profiles(); i++){
     get_profile(i);
-    
-    var cur_profile_prefs = cur_profile.Prefs.split(',');
-
-    var matching = matching_prefs(prefs,cur_profile_prefs);
-    
-    if(matching > highest_match){
-      best_index = i;
-      highest_match = matching;
+    if(excluded_profile_names.includes(cur_profile.Name)){
+      continue;
     }
+    var cur_profile_prefs = cur_profile.Prefs.split(',');
+    var matching = matching_strings(prefs,cur_profile_prefs);//array containing matching prefs
     
-    console.log(best_index);
+    var url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
+    get_nearby_restaurants(url);
   }
 }
 
-//haversine formula
+//haversine formula for lat/log diff to distance in meters
 function calc_distance(lat1,lon1,lat2,lon2){//in degrees
   var R = 6371e3; //radius of earth in meters
   var φ1 = lat1.toRadians();
@@ -65,16 +64,26 @@ function get_profile(number) {
   xobj.send(null);
  }
 
-//returns how many prefs match between two pref arrays
-function matching_prefs(prefs1,prefs2){
+function get_nearby_restaurants(formatted_url){
+  var xobj = new XMLHttpRequest();
+  xobj.setHeader('Authorization','Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx');
+  xobj.open("GET", url, false);
+  xobj.send();
+  xobj.onreadystatechange = function(){
+    var textobj = JSON.parse(xobj.responseText);
+    document.getElementbyId('Name').innerHTML = xobj.responseText;
+  }
+}
+
+//returns array of matches between two string arrays
+function matching_strings(stra1,stra2){
   var count = 0;
-  for(var i = 0; i < prefs1.length; i++){
-    for(var j = 0; j < prefs2.length; j++){
-      if(prefs1[i] == prefs2[j]){
+  for(var i = 0; i < stra1.length; i++){
+    for(var j = 0; j < stra2.length; j++){
+      if(stra1[i] == stra2[j]){
         count++;
         break;
       }
-      console.log(prefs1[i] + ' ' + prefs2[j]);
     }
   }
   return count;
