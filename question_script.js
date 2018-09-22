@@ -25,9 +25,9 @@ prefs.onclick = function(){
 next_button.onclick = function(){
   var pref_list = getSelectValues(prefs);
   
-  var prefs_param = '';
-  for (var i = 0; i < pref_list.length; i++){
-    prefs_param += '&prefs[]=' + pref_list[i];
+  var prefs_param = '&prefs[]=' + pref_list[0];
+  for (var i = 1; i < pref_list.length; i++){
+    prefs_param += ',' + pref_list[i];
   }
   
   function geoSuccess(position){
