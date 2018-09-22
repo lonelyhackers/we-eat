@@ -6,3 +6,7 @@ var prefs = url.searchParams.get('prefs');
 console.log(name);
 console.log(distance);
 console.log(prefs);
+
+if(name){
+  document.getElementById('Name').value = name;
+}
