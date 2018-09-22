@@ -8,21 +8,17 @@ var longitude = url.searchParams.get('longitude');
 
 var cur_profile;//facepalms
 
-console.log(prefs);
-
 show_best_match();
-
 
 function show_best_match(){
   var best_index = 0;
   var highest_match = 0;
   for(var i = 0; i < get_num_profiles(); i++){
     get_profile(i);
+    
     var cur_profile_prefs = cur_profile.Prefs.split(',');
-    console.log(cur_profile_prefs[0]);
 
     var matching = matching_prefs(prefs,cur_profile_prefs);
-    console.log(matching);
     
     if(matching > highest_match){
       best_index = i;
@@ -74,6 +70,7 @@ function matching_prefs(prefs1,prefs2){
     for(var j = 0; j < prefs2.length; j++){
       if(prefs1[i] == prefs2[j]){
         count++;
+        console.log('yo');
         break;
       }
     }
