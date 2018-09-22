@@ -7,10 +7,10 @@ prefs.onclick = function(){
   next_button.disabled = false;
 }
 
-next_button.onclick = function(){
+/*next_button.onclick = function(){
   var prefs_param = '';
   for (var i=0; i < prefs.value.length; i++){
     prefs_param += '&prefs=' + prefs[i];
   }
-  //document.location.replace('profileTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param); 
-}
+  document.location.replace('profileTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param); 
+}*/
