@@ -45,7 +45,7 @@ function get_num_profiles(){
 function get_profile(number) {   
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
-  xobj.open('GET', 'profiles/profile' + String(number) + '.json', true);
+  xobj.open('GET', 'profiles/profile' + String(number) + '.json', false);
   xobj.onreadystatechange = function () {
     if (xobj.readyState == 4 && xobj.status == "200") {
       console.log(JSON.parse(xobj.responseText));
