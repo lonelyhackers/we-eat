@@ -8,9 +8,15 @@ var prefs = url.searchParams.get('prefs[]').split(',');
 var latitude = url.searchParams.get('latitude');
 var longitude = url.searchParams.get('longitude');
 
+var clicked = false;
+
 var cur_profile;//facepalms
 
 var excluded_profile_names = [];
+
+document.getElementById('no_button').onclick = function(){
+	clicked = true;
+}
 
 show_best_match();
 
@@ -42,7 +48,12 @@ function show_best_match(){
 	  });
 	});
   scores.sort(sortFunction).reverse();
-  return scores;
+  
+	for(var i = 0; i < scores.length; i++){
+		newProfile(scores[i][1]);
+		while(clicked==false){}
+		clicked = false;
+	}
 }
 
 function sortFunction(a, b) {
