@@ -12,7 +12,7 @@ next_button.onclick = function(){
   for (var i=0; i < prefs.value.length; i++){
     prefs_param += '&prefs=' + prefs[i];
   }
-  document.location.href = 'profileTemplate.html'
+  window.location.href = 'profileTemplate.html'
   //document.location.replace('profileTemplate.html?name=' + input_name.value + '&distance=' + distance.value + prefs_param); 
 }
 
