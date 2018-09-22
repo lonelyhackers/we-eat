@@ -82,6 +82,7 @@ function get_nearby_restaurants(formatted_url){
       request.setRequestHeader("Authority", "Bearer Zm7gV6RHPno_RB4Kclkda_mc_Q7nAh7R72Iju71zoY9HGxfaXqUqXALMrT4adBC8kUVr5FdPI9CDrG2zCWUJnjT36o73X8JFBqK-YhprJeANbGSbNr5QZQGzIIymW3Yx");
     },
     url: formatted_url,
+    dataType : 'jsonp',
     success: function(msg) {
       console.log('Hey it worked');
       document.getElementbyId('Name').innerHTML = xobj.responseText;
