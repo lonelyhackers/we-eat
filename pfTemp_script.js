@@ -48,7 +48,7 @@ function show_best_match(){
 	});
   scores.sort(sortFunction).reverse();
 for(var k = 0; k < scores.length; k++){
-	newProfile(scores[k][1]);
+	newProfile(JSON.parse(scores[k][1]));
 	while(!clicked){}
 	clicked = false;
 }
@@ -155,8 +155,9 @@ function matching_strings(stra1,stra2){
 }
 
 function newProfile(json){
-    document.getElementById("input0").innerHTML = json[Name]
-    document.getElementById("input1").innerHTML = json[Distance]
-    document.getElementById("input2").innerHTML = json[Location]
-    document.getElementById("input3").innerHTML = json[Prefs]
+    document.getElementById("input0").innerHTML = json.Name;
+    document.getElementById("input1").innerHTML = json.Distance;
+    document.getElementById("input2").innerHTML = json.Location;
+    document.getElementById("input3").innerHTML = json.Prefs;
+}
 }
