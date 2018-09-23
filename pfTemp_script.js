@@ -142,3 +142,10 @@ function matching_strings(stra1,stra2){
   }
   return count;
 }
+function newProfile(json){
+    document.getElementById("input")[0] = json[Name]
+    document.getElementById("input")[1] = json[Distance]
+    document.getElementById("input")[2] = json[Location]
+    document.getElementById("input")[3] = json[Prefs]
+}
+
