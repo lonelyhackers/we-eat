@@ -15,7 +15,6 @@ var cur_profile;//facepalms
 var excluded_profile_names = [];
 
 document.getElementById('no_button').onclick = function(){
-	console.log('yo');
 	clicked = true;
 }
 	
