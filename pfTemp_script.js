@@ -152,3 +152,11 @@ function matching_strings(stra1,stra2){
   }
   return count;
 }
+
+function newProfile(json){
+    document.getElementById("input0").innerHTML = json[Name]
+    document.getElementById("input1").innerHTML = json[Distance]
+    document.getElementById("input2").innerHTML = json[Location]
+    document.getElementById("input3").innerHTML = json[Prefs]
+}
+
