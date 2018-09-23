@@ -51,6 +51,7 @@ for(var k = 0; k < scores.length; k++){
 	while(!clicked){}
 	clicked = false;
 }
+}
 
 //sort function for 2D-array
 function sortFunction(a, b) {
