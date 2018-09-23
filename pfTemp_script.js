@@ -30,7 +30,7 @@ function show_best_match(){
 	  cur_profile.each(function(err, item) {
 		if(item == null) {
 			db.close();
-			break;
+			return false;
 		}
 		var dist = calc_distance(latitude, longitude, cur_profile.latitude, cur_profile.longitude);
 		var cur_profile_prefs = cur_profile.Prefs.split(',');
