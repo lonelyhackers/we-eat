@@ -8,10 +8,16 @@ var prefs = url.searchParams.get('prefs[]').split(',');
 var latitude = url.searchParams.get('latitude');
 var longitude = url.searchParams.get('longitude');
 
+var clicked = false;
+
 var cur_profile;//facepalms
 
 var excluded_profile_names = [];
 
+document.getElementById('no_button').onclick = function(){
+	clicked = true;
+}
+	
 show_best_match();
 
 //returns array of users of decreasing score (entries are of format [score, JSON])
@@ -40,7 +46,10 @@ function show_best_match(){
 	  });
 	});
   scores.sort(sortFunction).reverse();
-  return scores;
+for(var k = 0; k < scores.length; k++){
+	newProfile(scores[k][1]);
+	while(!clicked){}
+	clicked = false;
 }
 
 //sort function for 2D-array
@@ -142,10 +151,3 @@ function matching_strings(stra1,stra2){
   }
   return count;
 }
-function newProfile(json){
-    document.getElementById("input")[0] = json[Name]
-    document.getElementById("input")[1] = json[Distance]
-    document.getElementById("input")[2] = json[Location]
-    document.getElementById("input")[3] = json[Prefs]
-}
-
