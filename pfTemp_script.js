@@ -36,11 +36,9 @@ function show_best_match(){
 		var cur_profile_prefs = cur_profile.Prefs.split(',');
 		var matching = matching_strings(prefs,cur_profile_prefs);//number of matching prefs
 		
-		if(dist > 1609.34*distance || dist > 1609.34*cur_profile.distance) {
-			continue;
+		if(dist <= 1609.34*distance && dist <= 1609.34*cur_profile.distance) {
+			scores.push([matching, exportJSON(cur_profile.Name)]);
 		}
-		
-		scores.push([matching, export(cur_profile.Name)]);
 		
 		/*var formatted_url = 'https://api.yelp.com/v3/businesses/search?latitude=' + String(latitude) + '&longitude=' + String(longitude) + '&radius=' + String(distance*1609) + '&categories=' + matching.toString();
 		get_nearby_restaurants(formatted_url);*/
@@ -83,7 +81,7 @@ function calc_distance(lat1,lon1,lat2,lon2){//in degrees
 }
 
 //Get name's info from MongoDB, returns in form of JSON object
-function export(name) {
+function exportJSON(name) {
 	var res;
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
